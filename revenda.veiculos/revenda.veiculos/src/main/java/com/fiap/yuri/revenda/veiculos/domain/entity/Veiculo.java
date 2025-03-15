@@ -16,6 +16,10 @@ public class Veiculo {
     private BigDecimal preco;
     private StatusVeiculo status;
 
+    public Veiculo(Long id) {
+        this.id = id;
+    }
+
     public Veiculo(VeiculoEntity veiculoEntity) {
         this.marca = veiculoEntity.getMarca();
         this.modelo = veiculoEntity.getModelo();
@@ -48,5 +52,13 @@ public class Veiculo {
             throw new IllegalStateException("Veículo não está disponível para venda.");
         }
         this.status = StatusVeiculo.VENDIDO;
+    }
+
+    public void marcarComoDisponivel() {
+        this.status = StatusVeiculo.DISPONIVEL;
+    }
+
+    public boolean isVendidoDisponivel() {
+        return this.status.equals(StatusVeiculo.DISPONIVEL);
     }
 }

@@ -5,5 +5,5 @@ import com.fiap.yuri.revenda.veiculos.application.dto.respose.VendaResponseDTO;
 
 public interface VendaApplicationService {
 
-    VendaResponseDTO efetuarVenda(EfetuarVendaRequestDTO dto);
+    VendaResponseDTO efetuarVenda(EfetuarVendaRequestDTO dto) throws Exception;
 }

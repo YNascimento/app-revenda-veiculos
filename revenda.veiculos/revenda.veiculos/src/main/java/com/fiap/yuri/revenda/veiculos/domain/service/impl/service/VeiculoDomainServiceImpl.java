@@ -30,4 +30,18 @@ public class VeiculoDomainServiceImpl implements VeiculoDomainService {
     public List<Veiculo> listarVeiculosByStatusVeiculo(StatusVeiculo statusVeiculo) {
         return repository.findByStatusOrderByPrecoAsc(statusVeiculo);
     }
+
+    @Override
+    public Veiculo get(Long id) {
+        try {
+            return repository.findById(id);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Veiculo save(Veiculo veiculo) {
+        return repository.save(veiculo);
+    }
 }

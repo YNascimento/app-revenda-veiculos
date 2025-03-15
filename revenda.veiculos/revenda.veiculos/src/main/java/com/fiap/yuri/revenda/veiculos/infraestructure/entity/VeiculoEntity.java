@@ -27,6 +27,10 @@ public class VeiculoEntity {
     @Enumerated(EnumType.STRING)
     private StatusVeiculo status;
 
+    public VeiculoEntity(Long id) {
+        this.id = id;
+    }
+
     public VeiculoEntity(Veiculo veiculo) {
         this.marca = veiculo.getMarca().toUpperCase();
         this.modelo = veiculo.getModelo().toUpperCase();

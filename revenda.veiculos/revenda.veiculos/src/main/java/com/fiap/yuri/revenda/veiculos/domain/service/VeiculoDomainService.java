@@ -12,4 +12,8 @@ public interface VeiculoDomainService {
     Veiculo editarVeiculo(Long id, Veiculo veiculo) throws Exception;
 
     List<Veiculo> listarVeiculosByStatusVeiculo(StatusVeiculo statusVeiculo);
+
+    Veiculo get(Long id);
+
+    Veiculo save(Veiculo veiculo);
 }

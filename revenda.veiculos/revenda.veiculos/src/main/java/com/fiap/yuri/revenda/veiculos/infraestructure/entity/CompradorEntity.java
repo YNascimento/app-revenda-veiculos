@@ -1,9 +1,12 @@
 package com.fiap.yuri.revenda.veiculos.infraestructure.entity;
 
+import com.fiap.yuri.revenda.veiculos.domain.entity.Comprador;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
+@Data
 @Entity
 @Table(name = "compradores")
 public class CompradorEntity {
@@ -17,4 +20,16 @@ public class CompradorEntity {
     private String telefone;
     private String cpf;
     private String endereco;
+
+    public CompradorEntity(Long id){
+        this.id = id;
+    }
+
+    public CompradorEntity(Comprador comprador) {
+        this.nome = comprador.getNome();
+        this.email = comprador.getEmail();
+        this.telefone = comprador.getTelefone();
+        this.cpf = comprador.getCpf();
+        this.endereco = comprador.getEndereco();
+    }
 }
