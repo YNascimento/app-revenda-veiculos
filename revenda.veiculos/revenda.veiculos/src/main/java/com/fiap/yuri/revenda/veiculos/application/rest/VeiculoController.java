@@ -21,24 +21,24 @@ public class VeiculoController {
     private final VeiculoApplicationService veiculoService;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<VeiculoResponseDTO> cadastrarVeiculo(@RequestBody @Valid CriarVeiculoRequestDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(veiculoService.cadastrarVeiculo(dto));
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<VeiculoResponseDTO> editarVeiculo(@PathVariable Long id, @RequestBody @Valid CriarVeiculoRequestDTO dto) {
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<VeiculoResponseDTO> editarVeiculo(@PathVariable Long id, @RequestBody @Valid CriarVeiculoRequestDTO dto) throws Exception {
         return ResponseEntity.ok(veiculoService.editarVeiculo(id, dto));
     }
 
-    @GetMapping("/disponiveis")
+//    @GetMapping("/disponiveis")
     public ResponseEntity<List<VeiculoResponseDTO>> listarVeiculosDisponiveis() {
         return ResponseEntity.ok(veiculoService.listarVeiculosDisponiveis());
     }
 
     @GetMapping("/vendidos")
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<List<VeiculoResponseDTO>> listarVeiculosVendidos() {
         return ResponseEntity.ok(veiculoService.listarVeiculosVendidos());
     }

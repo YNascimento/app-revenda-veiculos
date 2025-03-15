@@ -1,6 +1,7 @@
 package com.fiap.yuri.revenda.veiculos.domain.service;
 
 import com.fiap.yuri.revenda.veiculos.domain.entity.Veiculo;
+import com.fiap.yuri.revenda.veiculos.domain.enums.StatusVeiculo;
 
 import java.util.List;
 
@@ -8,9 +9,7 @@ public interface VeiculoDomainService {
 
     Veiculo cadastrarVeiculo(Veiculo veiculo);
 
-    Veiculo editarVeiculo(Long id, Veiculo veiculo);
+    Veiculo editarVeiculo(Long id, Veiculo veiculo) throws Exception;
 
-    List<Veiculo> listarVeiculosDisponiveis();
-
-    List<Veiculo> listarVeiculosVendidos();
+    List<Veiculo> listarVeiculosByStatusVeiculo(StatusVeiculo statusVeiculo);
 }

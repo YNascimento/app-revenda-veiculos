@@ -3,26 +3,44 @@ package com.fiap.yuri.revenda.veiculos.application.service.impl;
 import com.fiap.yuri.revenda.veiculos.application.dto.request.CriarVeiculoRequestDTO;
 import com.fiap.yuri.revenda.veiculos.application.dto.respose.VeiculoResponseDTO;
 import com.fiap.yuri.revenda.veiculos.application.service.VeiculoApplicationService;
+import com.fiap.yuri.revenda.veiculos.domain.entity.Veiculo;
+import com.fiap.yuri.revenda.veiculos.domain.enums.StatusVeiculo;
+import com.fiap.yuri.revenda.veiculos.domain.service.VeiculoDomainService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Service
 public class VeiculoApplicationServiceImpl implements VeiculoApplicationService {
 
+    private VeiculoDomainService veiculoDomainService;
+
     public VeiculoResponseDTO cadastrarVeiculo(CriarVeiculoRequestDTO dto){
-        return null;
+        Veiculo veiculo = new Veiculo(dto.getMarca(), dto.getModelo(), dto.getAno(), dto.getCor(), dto.getPreco());
+        veiculo = veiculoDomainService.cadastrarVeiculo(veiculo);
+        return new VeiculoResponseDTO(veiculo);
     }
 
-    public VeiculoResponseDTO editarVeiculo(Long id, CriarVeiculoRequestDTO dto) {
-        return null;
+    public VeiculoResponseDTO editarVeiculo(Long id, CriarVeiculoRequestDTO dto) throws Exception {
+        Veiculo veiculo = veiculoDomainService.editarVeiculo(id,
+                new Veiculo(dto.getMarca(), dto.getModelo(), dto.getAno(), dto.getCor(), dto.getPreco()));
+        return new VeiculoResponseDTO(veiculo);
     }
 
     public List<VeiculoResponseDTO> listarVeiculosDisponiveis() {
-        return null;
+        return veiculoDomainService.listarVeiculosByStatusVeiculo(StatusVeiculo.DISPONIVEL)
+                .stream()
+                .map(VeiculoResponseDTO::new)
+                .collect(Collectors.toList());
     }
 
     public List<VeiculoResponseDTO> listarVeiculosVendidos() {
-        return null;
+        return veiculoDomainService.listarVeiculosByStatusVeiculo(StatusVeiculo.VENDIDO)
+                .stream()
+                .map(VeiculoResponseDTO::new)
+                .collect(Collectors.toList());
     }
 }

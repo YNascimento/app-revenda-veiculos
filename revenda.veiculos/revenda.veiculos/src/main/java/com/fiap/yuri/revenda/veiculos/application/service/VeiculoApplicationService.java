@@ -9,7 +9,7 @@ public interface VeiculoApplicationService {
 
     VeiculoResponseDTO cadastrarVeiculo(CriarVeiculoRequestDTO dto);
 
-    VeiculoResponseDTO editarVeiculo(Long id, CriarVeiculoRequestDTO dto);
+    VeiculoResponseDTO editarVeiculo(Long id, CriarVeiculoRequestDTO dto) throws Exception;
 
     List<VeiculoResponseDTO> listarVeiculosDisponiveis();
 

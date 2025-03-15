@@ -1,6 +1,7 @@
 package com.fiap.yuri.revenda.veiculos.domain.entity;
 
 import com.fiap.yuri.revenda.veiculos.domain.enums.StatusVeiculo;
+import com.fiap.yuri.revenda.veiculos.infraestructure.entity.VeiculoEntity;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -14,6 +15,24 @@ public class Veiculo {
     private String cor;
     private BigDecimal preco;
     private StatusVeiculo status;
+
+    public Veiculo(VeiculoEntity veiculoEntity) {
+        this.marca = veiculoEntity.getMarca();
+        this.modelo = veiculoEntity.getModelo();
+        this.ano = veiculoEntity.getAno();
+        this.cor = veiculoEntity.getCor();
+        this.preco = veiculoEntity.getPreco();
+        this.status = veiculoEntity.getStatus();
+    }
+
+    public void update(Veiculo updatedVeiculo) {
+        this.marca = updatedVeiculo.getMarca();
+        this.modelo = updatedVeiculo.getModelo();
+        this.ano = updatedVeiculo.getAno();
+        this.cor = updatedVeiculo.getCor();
+        this.preco = updatedVeiculo.getPreco();
+        this.status = updatedVeiculo.getStatus();
+    }
 
     public Veiculo(String marca, String modelo, int ano, String cor, BigDecimal preco) {
         this.marca = marca;
