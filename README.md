@@ -24,10 +24,10 @@ Certifique-se de ter instalado:
 ### 2️⃣ Configurar Banco de Dados
 Caso queira rodar um banco localmente com Docker, execute:
 ```sh
-docker run --name postgres -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=revenda -p 5432:5432 -d postgres
+docker run --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=postgres -p 5432:5432 -d postgres
 ```
 
-Caso queira configurar manualmente, altere as credenciais no arquivo `application.properties`.
+Applicação também inclui um docker-compose.yml para rodar o Banco de dados localmente
 
 ### 3️⃣ Instalar Dependências e Rodar a API
 ```sh
@@ -41,39 +41,21 @@ A API estará disponível em: [http://localhost:8080](http://localhost:8080)
 
 ## 📖 Documentação da API
 
-A documentação dos endpoints pode ser acessada via **Swagger**:
-
-- [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
-
----
-
-## 🔐 Autenticação e Segurança
-A API utiliza **JWT** para autenticação. Para acessar endpoints protegidos, siga os passos:
-1. Faça login via `/auth/login` e receba um **token JWT**.
-2. Em cada requisição autenticada, envie o token no cabeçalho:
-   ```
-   Authorization: Bearer SEU_TOKEN_AQUI
-   ```
-
-Tipos de Usuários:
-- **ADMIN**: Pode cadastrar, editar veículos e visualizar veículos vendidos.
-- **COMPRADOR**: Pode comprar veículos.
+Os endpoint podem ser utilizados via Postman utilizando a colleciton:
+[Uploading Revenda Veiculos.postman_collection.json…]()
 
 ---
 
 ## 📌 Endpoints Principais
 
-### 🔑 **Autenticação**
-- `POST /auth/login` → Retorna um JWT para autenticação
-
 ### 🚗 **Veículos**
-- `POST /api/veiculos` → Cadastra um veículo (Apenas ADMIN)
-- `PUT /api/veiculos/{id}` → Edita um veículo (Apenas ADMIN)
+- `POST /api/veiculos` → Cadastra um veículo
+- `PUT /api/veiculos/{id}` → Edita um veículo
 - `GET /api/veiculos/disponiveis` → Lista veículos disponíveis
-- `GET /api/veiculos/vendidos` → Lista veículos vendidos (Apenas ADMIN)
+- `GET /api/veiculos/vendidos` → Lista veículos vendidos
 
-### 🛒 **Compras**
-- `POST /api/compras` → Realiza a compra de um veículo (Apenas COMPRADOR)
+### 🛒 **Vendas**
+- `POST /api/vendas` → Realiza a venda de um veículo
 
 ### 🧑 **Compradores**
 - `POST /api/compradores` → Cadastra um comprador
