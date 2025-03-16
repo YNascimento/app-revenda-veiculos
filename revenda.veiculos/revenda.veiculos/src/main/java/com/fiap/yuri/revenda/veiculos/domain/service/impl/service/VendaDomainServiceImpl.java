@@ -24,8 +24,8 @@ public class VendaDomainServiceImpl implements VendaDomainService {
     }
 
     @Override
-    public Venda concluirVenda(Long id) throws Exception {
-        Venda venda = repository.findById(id)
+    public Venda concluirVenda(Venda venda) throws Exception {
+        repository.findById(venda.getId())
                 .orElseThrow(() -> new Exception("Registro de Venda não encontrada"));
         venda.confirmarPagamento();
         return repository.save(venda);

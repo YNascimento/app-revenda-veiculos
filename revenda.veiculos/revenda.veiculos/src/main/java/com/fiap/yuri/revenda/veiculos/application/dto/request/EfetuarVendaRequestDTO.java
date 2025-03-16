@@ -10,5 +10,4 @@ public class EfetuarVendaRequestDTO {
     private Long compradorId;
     private Long veiculoId;
     private BigDecimal valorPago;
-
 }

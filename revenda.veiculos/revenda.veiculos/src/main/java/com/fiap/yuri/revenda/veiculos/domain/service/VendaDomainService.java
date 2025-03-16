@@ -12,7 +12,7 @@ public interface VendaDomainService {
 
     Venda registrarVendaPendente(Comprador comprador, Veiculo veiculo, BigDecimal valorPago);
 
-    Venda concluirVenda(Long id) throws Exception;
+    Venda concluirVenda(Venda venda) throws Exception;
 
     Venda cancelarVenda(Long id) throws Exception;
 }

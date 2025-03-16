@@ -23,16 +23,6 @@ public class VendaApplicationServiceImpl implements VendaApplicationService {
     private VendaDomainService vendaDomainService;
 
     public VendaResponseDTO efetuarVenda(EfetuarVendaRequestDTO dto) throws Exception {
-        /*
-         * Valida comprador
-         * Valida carro não vendido
-         * Salvar carro como vendido
-         * Salvar venda
-         */
-
-        Venda venda = vendaDomainService.registrarVendaPendente(
-                new Comprador(dto.getCompradorId()), new Veiculo(dto.getVeiculoId()), dto.getValorPago());
-
         Comprador comprador = compradorDomainService.get(dto.getCompradorId());
         if(Objects.isNull(comprador)){
             throw new RuntimeException(String.format("Comprador com Id %s é invalido", dto.getCompradorId().toString()));
@@ -42,8 +32,10 @@ public class VendaApplicationServiceImpl implements VendaApplicationService {
         if(Objects.isNull(veiculo) || !veiculo.isVendidoDisponivel()){
             throw new RuntimeException("Veículo não está disponível para venda");
         }
-
-        venda = vendaDomainService.concluirVenda(venda.getId());
+        Venda venda = vendaDomainService.registrarVendaPendente(comprador, veiculo, dto.getValorPago());
+        venda.setComprador(comprador);
+        venda.setVeiculo(veiculo);
+        vendaDomainService.concluirVenda(venda);
         return new VendaResponseDTO(venda.getId(), comprador.getId(), veiculo.getId(),
                 venda.getValorPago(), venda.getStatus().name());
     }

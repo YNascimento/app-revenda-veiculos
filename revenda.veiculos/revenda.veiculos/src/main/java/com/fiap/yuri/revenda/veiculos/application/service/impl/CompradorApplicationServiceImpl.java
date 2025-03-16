@@ -16,7 +16,7 @@ public class CompradorApplicationServiceImpl implements CompradorApplicationServ
 
     public CompradorResponseDTO cadastrarComprador(CriarCompradorRequestDTO dto) {
         Comprador comprador = new Comprador(dto);
-        comprador = repository.save(comprador);
-        return new CompradorResponseDTO(comprador);
+        Comprador savedComprador = repository.save(comprador);
+        return new CompradorResponseDTO(savedComprador);
     }
 }

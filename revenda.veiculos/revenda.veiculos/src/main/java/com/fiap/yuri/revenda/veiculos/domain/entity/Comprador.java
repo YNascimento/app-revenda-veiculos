@@ -4,9 +4,11 @@ import com.fiap.yuri.revenda.veiculos.application.dto.request.CriarCompradorRequ
 import com.fiap.yuri.revenda.veiculos.domain.enums.StatusVeiculo;
 import com.fiap.yuri.revenda.veiculos.infraestructure.entity.CompradorEntity;
 import lombok.Data;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
+@Getter
 @Data
 public class Comprador {
     private Long id;
@@ -29,11 +31,11 @@ public class Comprador {
         this.endereco = compradorEntity.getEndereco();
     }
 
-    public Comprador(CriarCompradorRequestDTO compradorEntity) {
-        this.nome = compradorEntity.getNome();
-        this.email = compradorEntity.getEmail();
-        this.telefone = compradorEntity.getTelefone();
-        this.cpf = compradorEntity.getCpf();
-        this.endereco = compradorEntity.getEndereco();
+    public Comprador(CriarCompradorRequestDTO criarCompradorRequestDTO) {
+        this.nome = criarCompradorRequestDTO.getNome();
+        this.email = criarCompradorRequestDTO.getEmail();
+        this.telefone = criarCompradorRequestDTO.getTelefone();
+        this.cpf = criarCompradorRequestDTO.getCpf();
+        this.endereco = criarCompradorRequestDTO.getEndereco();
     }
 }

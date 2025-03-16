@@ -1,9 +1,9 @@
 package com.fiap.yuri.revenda.veiculos.application.dto.respose;
 
 import com.fiap.yuri.revenda.veiculos.domain.entity.Comprador;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.math.BigDecimal;
+import lombok.NoArgsConstructor;
 
 @Data
 public class CompradorResponseDTO {

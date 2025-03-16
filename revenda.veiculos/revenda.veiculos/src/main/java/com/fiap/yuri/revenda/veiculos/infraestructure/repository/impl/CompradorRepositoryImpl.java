@@ -19,6 +19,7 @@ public class CompradorRepositoryImpl implements CompradorRepository {
     @Override
     public Comprador save(Comprador comprador) {
         CompradorEntity compradorEntity = new CompradorEntity(comprador);
+        jpaRepository.save(compradorEntity);
         comprador.setId(compradorEntity.getId());
         return comprador;
     }

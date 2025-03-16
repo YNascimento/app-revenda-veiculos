@@ -19,14 +19,14 @@ public class VeiculoApplicationServiceImpl implements VeiculoApplicationService 
     private VeiculoDomainService veiculoDomainService;
 
     public VeiculoResponseDTO cadastrarVeiculo(CriarVeiculoRequestDTO dto){
-        Veiculo veiculo = new Veiculo(dto.getMarca(), dto.getModelo(), dto.getAno(), dto.getCor(), dto.getPreco());
-        veiculo = veiculoDomainService.cadastrarVeiculo(veiculo);
+        Veiculo veiculo = new Veiculo(dto.getMarca(), dto.getModelo(), dto.getAno(), dto.getCor(), dto.getPreco(), StatusVeiculo.DISPONIVEL);
+        veiculoDomainService.cadastrarVeiculo(veiculo);
         return new VeiculoResponseDTO(veiculo);
     }
 
     public VeiculoResponseDTO editarVeiculo(Long id, CriarVeiculoRequestDTO dto) throws Exception {
-        Veiculo veiculo = veiculoDomainService.editarVeiculo(id,
-                new Veiculo(dto.getMarca(), dto.getModelo(), dto.getAno(), dto.getCor(), dto.getPreco()));
+        Veiculo updateVeiculo = new Veiculo(dto.getMarca(), dto.getModelo(), dto.getAno(), dto.getCor(), dto.getPreco(), dto.getStatus());
+        Veiculo veiculo = veiculoDomainService.editarVeiculo(id, updateVeiculo);
         return new VeiculoResponseDTO(veiculo);
     }
 

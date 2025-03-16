@@ -22,7 +22,8 @@ public class VeiculoRepositoryImpl implements VeiculoRepository {
     public Veiculo save(Veiculo veiculo) {
         VeiculoEntity veiculoEntity = new VeiculoEntity(veiculo);
         veiculoEntity = jpaRepository.save(veiculoEntity);
-        return new Veiculo(veiculoEntity);
+        veiculo.setId(veiculoEntity.getId());
+        return veiculo;
     }
 
     @Override

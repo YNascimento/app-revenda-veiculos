@@ -9,7 +9,7 @@ import lombok.Data;
 public class CriarCompradorRequestDTO {
 
     @NotEmpty
-    @Pattern(regexp = "[a-zA-Z_]+")
+    @Pattern(regexp = "^[A-Za-z]+((\\s)?((\\'|\\-|\\.)?([A-Za-z])+))*$")
     private String nome;
 
     @NotEmpty

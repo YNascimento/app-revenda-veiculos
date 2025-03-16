@@ -21,6 +21,7 @@ public class VeiculoResponseDTO {
         this.id = veiculo.getId();
         this.marca = veiculo.getMarca();
         this.modelo = veiculo.getModelo();
+        this.ano = veiculo.getAno();
         this.cor = veiculo.getCor();
         this.preco = veiculo.getPreco();
         this.status = veiculo.getStatus().name();

@@ -3,9 +3,11 @@ package com.fiap.yuri.revenda.veiculos.infraestructure.entity;
 import com.fiap.yuri.revenda.veiculos.domain.entity.Comprador;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "compradores")

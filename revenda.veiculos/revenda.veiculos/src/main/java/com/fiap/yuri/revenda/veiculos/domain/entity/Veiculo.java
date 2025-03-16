@@ -21,6 +21,7 @@ public class Veiculo {
     }
 
     public Veiculo(VeiculoEntity veiculoEntity) {
+        this.id = veiculoEntity.getId();
         this.marca = veiculoEntity.getMarca();
         this.modelo = veiculoEntity.getModelo();
         this.ano = veiculoEntity.getAno();
@@ -38,13 +39,13 @@ public class Veiculo {
         this.status = updatedVeiculo.getStatus();
     }
 
-    public Veiculo(String marca, String modelo, int ano, String cor, BigDecimal preco) {
+    public Veiculo(String marca, String modelo, int ano, String cor, BigDecimal preco, StatusVeiculo status) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
         this.cor = cor;
         this.preco = preco;
-        this.status = StatusVeiculo.DISPONIVEL;
+        this.status = status;
     }
 
     public void marcarComoVendido() {

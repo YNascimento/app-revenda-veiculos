@@ -1,5 +1,6 @@
 package com.fiap.yuri.revenda.veiculos.application.dto.request;
 
+import com.fiap.yuri.revenda.veiculos.domain.enums.StatusVeiculo;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,4 +13,5 @@ public class CriarVeiculoRequestDTO {
     private int ano;
     private String cor;
     private BigDecimal preco;
+    private StatusVeiculo status;
 }

@@ -12,7 +12,7 @@
 	<artifactId>revenda.veiculos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>revenda.veiculos</name>
-	<description>API para gerenciar a revenda de veículos automotores, permitindo o cadastro, edição e venda de veículos, listagem de veículos disponíveis e vendidos, cadastro de compradores e um fluxo completo de compra.</description>
+	<description>API para gerenciar a revenda de veículos, permitindo o cadastro, edição e venda de veículos, listagem de veículos disponíveis e vendidos e cadastro de compradores.</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -43,7 +43,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -63,25 +62,19 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.15.2</version>
 		</dependency>
+
+		<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-security</artifactId>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</path>
-					</annotationProcessorPaths>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
